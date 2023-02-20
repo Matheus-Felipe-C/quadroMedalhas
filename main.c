@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "relatorio.h"
 
-int main()
-{
-    printf("Hello world!\n");
+/**
+  * @author Matheus Felipe
+  */
+int main() {
+    editarEntrada();
+
     return 0;
 }
