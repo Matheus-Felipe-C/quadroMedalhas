@@ -5,8 +5,8 @@
 /**
   * @author Matheus Felipe
   */
-int main() {
-    editarEntrada();
-
+int main()
+{
+    editarEntrada(5, 1, 1, 2);
     return 0;
 }

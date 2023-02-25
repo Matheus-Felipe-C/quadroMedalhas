@@ -31,13 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="accessTxt.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="acessTxt.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="relatorio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="relatorio.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
