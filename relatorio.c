@@ -128,7 +128,7 @@ int editarEntrada(int quantMedalha, int pais, int modalidade, int tipoMedalha)
     FILE *entrada = fopen("entrada.txt", "w");
 
     fprintf(entrada, "%s", novaEntrada);
-    printf("Entrada atualizada com sucesso!");
+    printf("\nEntrada atualizada com sucesso!\n");
     fclose(entrada);
 
     free(data);
@@ -212,6 +212,12 @@ void gerarRelatorioInicial()
     fprintf(arquivo, "\nQuantidade Inicial de provas disputadas: %d\n", totalProvas);
     fprintf(arquivo,"Percentual de provas disputadas: %.2f%%\n\n",percProvas);
 
+    //TODO - Calcular o ranking dos paises e o resto dos relatórios
+
 }
 
-void gerarRelatorioFinal();
+//TODO - Gerar relatório final
+void gerarRelatorioFinal()
+{
+    printf("\nA função de gerar um relatorio ao finalizar a aplicacao está em desenvolvimento, favor tente mais tarde\n");
+}
