@@ -58,6 +58,9 @@ int editarEntrada(int quantMedalha, int pais, int modalidade, int tipoMedalha)
 
         if (linhas == 2)
         {
+            //Como caracteres são números,
+            //ao diminior o '0' transforma o caractere me número
+            //E ao somar um número a '0' o transforma de volta em caractere
             colunas = (int)(data[i - 1] - '0') * 3;
             linhas = (int)data[0] - '0';
             break;
@@ -122,17 +125,98 @@ int editarEntrada(int quantMedalha, int pais, int modalidade, int tipoMedalha)
         }
     }
     novaEntrada[cont] = '\0';
-    printf("%s\n", novaEntrada);
     FILE *entrada = fopen("entrada.txt", "w");
 
     fprintf(entrada, "%s", novaEntrada);
     printf("Entrada atualizada com sucesso!");
+    fclose(entrada);
 
     free(data);
     return 0;
 }
 
-int gerarRelatorio()
+int gerarRelatorioInicial()
 {
+    char *data = lerEntrada();
+
+    if (data == NULL)
+    {
+        printf("Nao foi possivel ler o arquivo\n");
+        return 1;
+    }
+
+    int i, j = 4, cont = 0, linhas = 0, colunas;
+    int dataSize = strlen(data);
+
+    // Calcula o número de linhas e colunas
+    for (i = 0; i < dataSize; i++)
+    {
+        if (data[i] == '\n')
+            linhas++;
+
+        if (linhas == 2)
+        {
+            //Como caracteres são números,
+            //ao diminior o '0' transforma o caractere me número
+            //E ao somar um número a '0' o transforma de volta em caractere
+            colunas = (int)(data[i - 1] - '0') * 3;
+            linhas = (int)data[0] - '0';
+            break;
+        }
+    }
+    int medalhas[linhas][colunas]; // Matriz que deverá possuir os dados em si
+
+    // Adiciona o valor para a matriz medalhas
+    for (i = 0; i < linhas; i++)
+    {
+        while (j < dataSize)
+        {
+            if (data[j] == '\n')
+            {
+                j++;
+                cont = 0;
+                break;
+            }
+            if (data[j] != ' ')
+            {
+                medalhas[i][cont] = data[j] - '0';
+                cont++;
+            }
+            j++;
+        }
+    }
+    // Relatório inicial
+    colunas = 3;
+    int totalProvas = 0, relatorio[linhas][colunas];;
+    float percProvas = 0;
+    FILE *arquivo = fopen("relatorio.txt", "w");
+
+    fprintf(arquivo, "%s", "Quadro de Medalhas Inicial\n     ");
+    fprintf(arquivo, "%s", "Ouro|Prata|Bronze\n");
+
+    //Calcula a soma de medalhas e total de provas
+    for (i = 0; i < linhas; i++)
+    {
+        fprintf(arquivo, "P%d    ", i+1);
+        for (j = 0; j < colunas; j++)
+        {
+            relatorio[i][j] = medalhas[i][j] + medalhas[i][j + 3];
+            fprintf(arquivo, "%d    ", relatorio[i][j]);
+            totalProvas += relatorio[i][j];
+        }
+        fprintf(arquivo, "\n");
+    }
+
+    percProvas = 100 * (totalProvas / 306.0) ;
+
+    fprintf(arquivo, "\nQuantidade Inicial de provas disputadas: %d\n", totalProvas);
+    fprintf(arquivo,"Percentual de provas disputadas: %.2f%%\n\n",percProvas);
+
+    //Ordenado por quantidade de ouros
+
+    //Ordenado pelo total
+
     return 0;
 }
+
+int gerarRelatorioFinal();

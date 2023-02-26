@@ -7,6 +7,6 @@
   */
 int main()
 {
-    editarEntrada(5, 1, 1, 2);
+    gerarRelatorioInicial();
     return 0;
 }

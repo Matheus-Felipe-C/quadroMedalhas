@@ -3,6 +3,5 @@
 
 int editarEntrada(int quantMedalha, int pais, int modalidade, int tipoMedalha);
 int lerEntrada();
-int gerarRelatorio();
-
+int gerarRelatorioInicial();
 #endif

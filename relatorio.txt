@@ -1,0 +1,7 @@
+Quadro de Medalhas Inicial
+     Ouro|Prata|Bronze
+P1    3    7    11    
+P2    6    7    11    
+
+Quantidade Inicial de provas disputadas: 45
+Percentual de provas disputadas: 6.80%
