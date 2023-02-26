@@ -135,14 +135,14 @@ int editarEntrada(int quantMedalha, int pais, int modalidade, int tipoMedalha)
     return 0;
 }
 
-int gerarRelatorioInicial()
+void gerarRelatorioInicial()
 {
     char *data = lerEntrada();
 
     if (data == NULL)
     {
         printf("Nao foi possivel ler o arquivo\n");
-        return 1;
+        exit(1);
     }
 
     int i, j = 4, cont = 0, linhas = 0, colunas;
@@ -212,11 +212,6 @@ int gerarRelatorioInicial()
     fprintf(arquivo, "\nQuantidade Inicial de provas disputadas: %d\n", totalProvas);
     fprintf(arquivo,"Percentual de provas disputadas: %.2f%%\n\n",percProvas);
 
-    //Ordenado por quantidade de ouros
-
-    //Ordenado pelo total
-
-    return 0;
 }
 
-int gerarRelatorioFinal();
+void gerarRelatorioFinal();
